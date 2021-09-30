@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+	crossorigin="anonymous">
+</head>
+<body>
+	<div class="container">
+		<div th:replace="/NavBar" :: navbar></div>
+		<div class="p-1">
+
+			<form action="#" th:action="@{/usuarios/agregarUsuario}"
+				th:object="${usuario}" method="post">
+
+				<div class="mb-3">
+					<label for="nombre" class="form-label">Nombre</label> <input
+						type="text" th:field="*{nombre}" id="nombre" placeholder="Nombre"
+						class="form-control"> <span
+						th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></span>
+				</div>
+
+				<div class="mb-3">
+					<label for="cedula" class="form-label">Cedula</label> <input
+						type="text" th:field="*{numeroDocumento}" id="cedula"
+						placeholder="Cedula" class="form-control"> <span
+						th:if="${#fields.hasErrors('numeroDocumento')}"
+						th:errors="*{numeroDocumento}"></span>
+				</div>
+
+				<div class="mb-3">
+					<label for="email" class="form-label">Email</label> <input
+						type="text" th:field="*{email}" id="email" placeholder="Email"
+						class="form-control"> <span
+						th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+				</div>
+
+				<div class="mb-3">
+					<label for="nombreUsuario" class="form-label">Usuario</label> <input
+						type="text" th:field="*{nombreUsuario}" id="nombreUsuario"
+						placeholder="Usuario" class="form-control"> <span
+						th:if="${#fields.hasErrors('nombreUsuario')}"
+						th:errors="*{nombreUsuario}"></span>
+				</div>
+
+				<div class="mb-3">
+					<label for="password" class="form-label">Contraseña</label> <input
+						type="password" th:field="*{password}" id="password"
+						placeholder="Contraseña" class="form-control"> <span
+						th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+				</div>
+
+				<input type="submit" class="btn btn-primary" value="Agregar">
+			</form>
+		</div>
+	</div>
+</body>
+</html>
